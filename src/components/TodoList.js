@@ -1,8 +1,8 @@
 import React from 'react';
 
 	const showTodoList = (props) => {
-		const items = (props["items"] !== undefined) ? Array.from(props.items) : props;
-		return items.map((item, i) => {
+		const items = Array.from(props.items);
+		return items.map((item, i) => { // For loop is statement, cannot write in JSX. Map is an expression which is allowed
 			return (
 				<li key={i}>
 					- {item.description} <i className="small">'createdBy: {item.createdBy}'</i>
