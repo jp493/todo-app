@@ -5,7 +5,7 @@ import React from 'react';
 		return items.map((item, i) => {
 			return (
 				<li key={i}>
-					{item.description}
+					- {item.description} <i className="small">'createdBy: {item.createdBy}'</i>
 				</li>
 		)
 		})
@@ -13,9 +13,9 @@ import React from 'react';
 
 	const List = (props) => {
 		return (
-			<div>
-				<h1>My Todo list</h1>
-				<ul>
+			<div className="col-md-4">
+				<h4>My Todo List</h4>
+				<ul className="list-unstyled item-list">
 				 {showTodoList(props.items)}
 				</ul>
 			</div>
