@@ -1,25 +1,27 @@
-import React from 'react';
+import React from 'react'; // why need it? because we need to write JSX in return
 
 	const showTodoList = (props) => {
 		const items = Array.from(props.items);
 		return items.map((item, i) => { // For loop is statement, cannot write in JSX. Map is an expression which is allowed
 			return (
 				<li key={i}>
-					- {item.description} <i className="small">'createdBy: {item.createdBy}'</i>
-					<div><button
+					<button
 						type="button"
-						onClick={() => this.removeTodo(i)}>Remove</button></div>
+						onClick={() => this.removeTodo(i)}>Remove</button>
+						- {item.description} <i className="small">'createdBy: {item.createdBy}' <br/><br/></i>
 				</li>
 		)
 		})
 	}
 
 	const List = (props) => {
+		// console.log(props);
+		const {items, removeTodo} = props;
 		return (
 			<div className="col-md-4">
 				<h4>My Todo List</h4>
 				<ul className="list-unstyled item-list">
-				 {showTodoList(props.items)}
+				 {showTodoList(items)}
 				</ul>
 			</div>
 		)

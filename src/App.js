@@ -1,4 +1,7 @@
+/* External Depenences*/
 import React, { Component } from 'react';
+
+/* Internal UI Depenences*/
 import TodoList from './components/TodoList';
 import AddTodo from './components/AddTodo';
 
@@ -36,30 +39,28 @@ class TodoApp extends Component {
 	*/
 
 	addTodo = () => {
-		var _this = this;
-		var val = _this.state.todo;
-		var len = _this.state.todos.items.length + 1;
-		var d = _this.state.date;
+		var val = this.state.todo;
+		var len = this.state.todos.items.length + 1;
+		var d = this.state.date;
 		/*
 			Deep dive:
 			const {todos, todo} = this.state;
 			[...todos, todo] create a clone, problem here is create a refrence to an obj. ...spread
 			solution: JSON.parse(JSON.sringify(this.state)), convert the obj to a string
 		*/
-		const nextTodos = Array.from(_this.state.todos.items);
+		const nextTodos = Array.from(this.state.todos.items);
 
 		// debugger
 		nextTodos.push({"id":len,"description":val, "createdBy":d});
 		const next = Object.assign({}, {items:nextTodos});
-		_this.setState(
+		this.setState(
 			{ todos: next }
 		);
 		this.clearInput();
 	}
 
 	handleChange = (e) => {
-		var _this = this;
-		_this.setState({
+		this.setState({
 			/*
 				ES6 property, it can used for all components name, defined in element's name
 				The benefit of doing this is to use this func for multipal changes.
@@ -85,7 +86,10 @@ class TodoApp extends Component {
 	render() {
 		return (
 			<div className="home">
-					<TodoList items={this.state.todos} />
+					<TodoList
+						items={this.state.todos}
+						removeTodo={this.removeTodo}
+					/>
 					<AddTodo
 						addTodo={this.addTodo} handleChange={this.handleChange}
 						todo={this.state.todo}

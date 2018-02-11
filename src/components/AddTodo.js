@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AddTodo = (props) => {
-	const { handleChange, addTodo, todo } = props;
+	const { handleChange, addTodo, todo } = props; // props always return object
 	return (
 		<div className="col-md-4">
 			<input
