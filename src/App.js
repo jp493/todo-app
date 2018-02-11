@@ -5,12 +5,15 @@ import AddTodo from './components/AddTodo';
 import items from './components/TodoItems'; //data
 
 /*
- - Show Todo list
- - Add a Todo item
+ 1. Show Todo list
+ 2. Add a Todo item
  			- input field to allow user to enter a new todo item
 			- button to add the value to the list
 			- clear the input
- - Remove a Todo item
+ 3. Remove a Todo item
+ - Button which says Remove Todo
+ - When you click the button, we'll remove the todo item
+ - use splice to remove the array
 */
 
 class TodoApp extends Component {
@@ -71,6 +74,14 @@ class TodoApp extends Component {
 		})
 	}
 
+	removeTodo = (index) => {
+		const nextTodos = Array.from(this.state.todos);
+		nextTodos.splice(index, 1); // remove thie todo by its index
+		this.setState({
+			todos: index
+		})
+	}
+
 	render() {
 		return (
 			<div className="home">
@@ -79,6 +90,7 @@ class TodoApp extends Component {
 						addTodo={this.addTodo} handleChange={this.handleChange}
 						todo={this.state.todo}
 					/>
+
 			</div>
 		)
 	}

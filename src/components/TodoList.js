@@ -6,6 +6,9 @@ import React from 'react';
 			return (
 				<li key={i}>
 					- {item.description} <i className="small">'createdBy: {item.createdBy}'</i>
+					<div><button
+						type="button"
+						onClick={() => this.removeTodo(i)}>Remove</button></div>
 				</li>
 		)
 		})
